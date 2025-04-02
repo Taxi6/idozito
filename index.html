@@ -300,34 +300,5 @@
 
         showQuestion();
     </script>
-    let remainingTime = localStorage.getItem("quizTime") ? parseInt(localStorage.getItem("quizTime")) : 5 * 60 * 60;
-let timerElement = document.getElementById("timer");
-
-function updateTimerDisplay() {
-    let hours = Math.floor(remainingTime / 3600);
-    let minutes = Math.floor((remainingTime % 3600) / 60);
-    let seconds = remainingTime % 60;
-    timerElement.textContent = `Idő hátravan: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-}
-
-function countdown() {
-    if (remainingTime > 0) {
-        remainingTime--;
-        localStorage.setItem("quizTime", remainingTime);
-        updateTimerDisplay();
-    } else {
-        clearInterval(timerInterval);
-        alert("Lejárt az idő!");
-        localStorage.clear();
-        location.reload();
-    }
-}
-
-window.onload = function() {
-    updateTimerDisplay();
-};
-
-let timerInterval = setInterval(countdown, 1000);
-
 </body>
 </html>
